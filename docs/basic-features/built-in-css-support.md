@@ -41,13 +41,11 @@ In production, all CSS files will be automatically concatenated into a single mi
 
 Next.js supports [CSS Modules](https://github.com/css-modules/css-modules) using the `[name].module.css` file naming convention.
 
-CSS Modules locally scope CSS by automatically creating a unique class name. This allows you to use the same CSS class name in different files without worrying about collisions.
+CSS Modules locally scope CSS by automatically creating a unique class name, allowing you to use the same CSS class name in different files without worrying about collisions. This behavior makes CSS Modules the ideal way to include component-level CSS.
 
-This behavior makes CSS Modules the ideal way to include component-level CSS. CSS Module files **can be imported anywhere in your application**.
+CSS Module files **can be imported anywhere in your application**.
 
-For example:
-
-### `components/Button.module.css`
+To get started, let's say we have a `components` folder, and on it we want to add a button component. We'll start by adding the CSS in the file `components/Button.module.css` with the following content:
 
 ```css
 /*
@@ -60,12 +58,14 @@ You do not need to worry about .error {} colliding with any other `.css` or
 }
 ```
 
+And now create `components/Button.js` and import the CSS file, like so:
+
 ### `components/Button.js`
 
 ```jsx
 import styles from './Button.module.css'
 
-export function Button() {
+export default function Button() {
   return (
     <button type="button" className={styles.error}>
       Destroy
@@ -74,9 +74,7 @@ export function Button() {
 }
 ```
 
-CSS Modules are an _optional feature_. Regular `<link>` stylesheets and CSS files are fully supported.
-
-CSS Modules are **only enabled for files with the `.module.css` extension**.
+CSS Modules are an _optional feature_ and are **only enabled for files with the `.module.css` extension**.
 
 In production, all CSS Module files will be automatically concatenated into **many minified and code-split** `.css` files. These `.css` files represent hot execution paths in your application, ensuring the minimal amount of CSS is loaded for your application to paint.
 
