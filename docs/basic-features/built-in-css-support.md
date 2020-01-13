@@ -6,8 +6,7 @@ description: Next.js supports including CSS files as Global CSS or CSS Modules, 
 
 ## Adding a Stylesheet
 
-Next.js allows you to import CSS files from a JavaScript file (`pages/_app.js`).
-This is possible because Next.js extends the concept of `import` beyond JavaScript.
+Next.js allows you to import CSS files from a JavaScript file (`pages/_app.js`). This is possible because Next.js extends the concept of `import` beyond JavaScript.
 
 To add a stylesheet to your application, import the CSS file within `pages/_app.js`:
 
@@ -34,23 +33,17 @@ export default function MyApp({ Component, pageProps }) {
 }
 ```
 
-In development, expressing stylesheets this way allows your styles to be
-hot reloaded as you edit them—meaning you can keep application state.
+In development, expressing stylesheets this way allows your styles to be hot reloaded as you edit them—meaning you can keep application state.
 
-In production, all CSS files will be automatically concatenated into a single
-minified `.css` file.
+In production, all CSS files will be automatically concatenated into a single minified `.css` file.
 
 ## Adding Component-Level CSS
 
-Next.js supports [CSS Modules](https://github.com/css-modules/css-modules)
-using the `[name].module.css` file naming convention.
+Next.js supports [CSS Modules](https://github.com/css-modules/css-modules) using the `[name].module.css` file naming convention.
 
-CSS Modules locally scope CSS by automatically creating a unique class name.
-This allows you to use the same CSS class name in different files without
-worrying about collisions.
+CSS Modules locally scope CSS by automatically creating a unique class name. This allows you to use the same CSS class name in different files without worrying about collisions.
 
-This behavior makes CSS Modules the ideal way to include component-level CSS.
-CSS Module files **can be imported anywhere in your application**.
+This behavior makes CSS Modules the ideal way to include component-level CSS. CSS Module files **can be imported anywhere in your application**.
 
 For example:
 
@@ -81,14 +74,9 @@ export function Button() {
 }
 ```
 
-CSS Modules are an _optional feature_. Regular `<link>` stylesheets and CSS
-files are fully supported.
-CSS Modules are **only enabled for files with the `.module.css` extension**.
+CSS Modules are an _optional feature_. Regular `<link>` stylesheets and CSS files are fully supported. CSS Modules are **only enabled for files with the `.module.css` extension**.
 
-In production, all CSS Module files will be automatically concatenated into
-**many minified and code-split** `.css` files.
-These `.css` files represent hot execution paths in your application, ensuring
-the minimal amount of CSS is loaded for your application to paint.
+In production, all CSS Module files will be automatically concatenated into **many minified and code-split** `.css` files. These `.css` files represent hot execution paths in your application, ensuring the minimal amount of CSS is loaded for your application to paint.
 
 ## CSS-in-JS
 
@@ -105,8 +93,7 @@ the minimal amount of CSS is loaded for your application to paint.
   </ul>
 </details>
 
-It's possible to use any existing CSS-in-JS solution.
-The simplest one is inline styles:
+It's possible to use any existing CSS-in-JS solution. The simplest one is inline styles:
 
 ```jsx
 function HiThere() {
@@ -116,8 +103,7 @@ function HiThere() {
 export default HiThere
 ```
 
-We bundle [styled-jsx](https://github.com/zeit/styled-jsx) to provide support for isolated scoped CSS.
-The aim is to support "shadow CSS" similar to Web Components, which unfortunately [do not support server-rendering and are JS-only](https://github.com/w3c/webcomponents/issues/71).
+We bundle [styled-jsx](https://github.com/zeit/styled-jsx) to provide support for isolated scoped CSS. The aim is to support "shadow CSS" similar to Web Components, which unfortunately [do not support server-rendering and are JS-only](https://github.com/w3c/webcomponents/issues/71).
 
 See the above examples for other popular CSS-in-JS solutions (like Styled Components).
 
