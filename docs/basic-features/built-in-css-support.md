@@ -4,13 +4,11 @@ description: Next.js supports including CSS files as Global CSS or CSS Modules, 
 
 # Built-In CSS Support
 
+Next.js allows you to import CSS files from a JavaScript file. This is possible because Next.js extends the concept of `import` beyond JavaScript.
+
 ## Adding a Stylesheet
 
-Next.js allows you to import CSS files from a JavaScript file (`pages/_app.js`). This is possible because Next.js extends the concept of `import` beyond JavaScript.
-
-To add a stylesheet to your application, import the CSS file within `pages/_app.js`:
-
-### `styles.css`
+To add a stylesheet to your application, start by creating a css file, we'll use `styles.css` for the following example:
 
 ```css
 body {
@@ -21,17 +19,19 @@ body {
 }
 ```
 
-### `pages/_app.js`
+Then import the CSS file within [`pages/_app.js`](docs\advanced-features\custom-app.md):
 
 ```jsx
 import '../styles.css'
 
-// This default export is required in a new `pages/_app.js` file.
-// Read more: https://nextjs.org/docs/advanced-features/custom-app
 export default function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
 }
 ```
+
+In this case, styles in `styles.css` are not scoped and will affect all pages and components inside your application.
+
+Due to the nature of global styles, and to avoid conflicts, you can only place them inside [`pages/_app.js`](docs\advanced-features\custom-app.md), which is a wrapper for all pages.
 
 In development, expressing stylesheets this way allows your styles to be hot reloaded as you edit them—meaning you can keep application state.
 
@@ -74,7 +74,9 @@ export function Button() {
 }
 ```
 
-CSS Modules are an _optional feature_. Regular `<link>` stylesheets and CSS files are fully supported. CSS Modules are **only enabled for files with the `.module.css` extension**.
+CSS Modules are an _optional feature_. Regular `<link>` stylesheets and CSS files are fully supported.
+
+CSS Modules are **only enabled for files with the `.module.css` extension**.
 
 In production, all CSS Module files will be automatically concatenated into **many minified and code-split** `.css` files. These `.css` files represent hot execution paths in your application, ensuring the minimal amount of CSS is loaded for your application to paint.
 
