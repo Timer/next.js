@@ -6,7 +6,7 @@ description: Next.js supports including CSS files as Global CSS or CSS Modules, 
 
 Next.js allows you to import CSS files from a JavaScript file. This is possible because Next.js extends the concept of `import` beyond JavaScript.
 
-## Adding a Stylesheet
+## Adding a Global Stylesheet
 
 To add a stylesheet to your application, start by creating a css file, we'll use `styles.css` for the following example:
 
